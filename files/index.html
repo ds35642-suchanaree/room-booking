@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บ้านริมคลอง รีสอร์ท | จองห้องพักออนไลน์</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">บ้านริมคลอง</a>
+  <nav aria-label="เมนูหลัก">
+    <a href="#rooms">ห้องพัก</a>
+    <a href="#my-bookings">การจองของฉัน <span id="booking-count" class="badge">0</span></a>
+    <a href="#contact">ติดต่อ</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- 1. HERO + แบบฟอร์มค้นหา -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>นอนฟังเสียงน้ำ<br>ตื่นมาริมคลอง</h1>
+      <p>รีสอร์ทขนาดเล็ก 6 ห้อง เงียบ ร่มรื่น เลือกวันพักแล้วดูห้องว่างได้ทันที</p>
+    </div>
+    <form id="search-form" class="search-card" novalidate>
+      <label>เช็คอิน <input type="date" id="checkin" required></label>
+      <label>เช็คเอาต์ <input type="date" id="checkout" required></label>
+      <label>ผู้เข้าพัก
+        <select id="guests"></select>
+      </label>
+      <button type="submit" class="btn">ดูห้องว่าง</button>
+      <p id="search-error" class="error" role="alert"></p>
+    </form>
+  </section>
+
+  <!-- 2. รายการห้อง -->
+  <section id="rooms" class="section">
+    <div class="section-head">
+      <h2>ห้องพัก</h2>
+      <p id="rooms-summary"></p>
+    </div>
+    <div id="room-list" class="room-grid"></div>
+  </section>
+
+  <!-- 3. การจองของฉัน -->
+  <section id="my-bookings" class="section alt">
+    <div class="section-head">
+      <h2>การจองของฉัน</h2>
+      <p>ข้อมูลเก็บในเบราว์เซอร์เครื่องนี้เท่านั้น</p>
+    </div>
+    <ul id="booking-list" class="booking-list"></ul>
+  </section>
+</main>
+
+<footer id="contact" class="site-footer">
+  <p>บ้านริมคลอง รีสอร์ท · โทร 038-000-000 · เช็คอิน 14:00 เช็คเอาต์ 11:00</p>
+  <p class="note">เว็บตัวอย่าง ไม่มีฐานข้อมูล การจองบันทึกใน localStorage</p>
+</footer>
+
+<!-- 4. หน้าต่างกรอกข้อมูลจอง -->
+<dialog id="booking-dialog">
+  <form id="booking-form" novalidate>
+    <h3 id="dlg-title"></h3>
+    <p id="dlg-summary" class="summary"></p>
+    <label>ชื่อผู้จอง <input id="f-name" autocomplete="name" required></label>
+    <label>เบอร์โทร <input id="f-phone" inputmode="tel" autocomplete="tel" placeholder="0812345678" required></label>
+    <p id="form-error" class="error" role="alert"></p>
+    <div class="dlg-actions">
+      <button type="button" class="btn ghost" id="dlg-cancel">ยกเลิก</button>
+      <button type="submit" class="btn">ยืนยันการจอง</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
